@@ -8,7 +8,7 @@ public class Calculator {
 
     public static void main(String[] args) {
         int sum=0;
-        int result=0;
+        float result=0;
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter expression : ");
         String input = scanner.next();
@@ -28,20 +28,20 @@ public class Calculator {
         switch (operator)
         {
             case "+":
-                result = Integer.valueOf(oper1) + Integer.valueOf(oper2);
+                result = Float.valueOf(oper1) + Float.valueOf(oper2);
                 break;
             case "-":
-                result = Integer.valueOf(oper1) - Integer.valueOf(oper2);
+                result = Float.valueOf(oper1) - Float.valueOf(oper2);
                 break;
             case "*":
-                result = Integer.valueOf(oper1) * Integer.valueOf(oper2);
+                result = Float.valueOf(oper1) * Float.valueOf(oper2);
                 break;
             case "/":
-                result = Integer.valueOf(oper1) / Integer.valueOf(oper2);
+                result = Float.valueOf(oper1) / Float.valueOf(oper2);
                 break;
 
         }
-        System.out.println(Integer.toString(result));
+        System.out.println(Float.toString(result));
 
     }
 
