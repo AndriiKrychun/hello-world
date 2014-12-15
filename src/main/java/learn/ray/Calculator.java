@@ -7,13 +7,13 @@ import java.util.regex.Pattern;
 public class Calculator {
 
     public static void main(String[] args) {
-        int sum=0;
-        float result=0;
+        int sum = 0;
+        float result = 0;
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter expression : ");
         String input = scanner.next();
 
-        Pattern pat = Pattern.compile("(\\d+)([\\+\\-\\/\\*])(\\d+)");
+        Pattern pat = Pattern.compile("(\\d+(\\.\\d)?)([\\+\\-\\/\\*])(\\d+)");
         Matcher mat = pat.matcher(input);
         mat.find();
         String oper1 = mat.group(1);
@@ -25,8 +25,7 @@ public class Calculator {
         //String oper1 = sc.next();
         //String oper2 = sc.next();
 
-        switch (operator)
-        {
+        switch (operator) {
             case "+":
                 result = Float.valueOf(oper1) + Float.valueOf(oper2);
                 break;

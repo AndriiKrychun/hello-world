@@ -1,35 +1,52 @@
 package learn.ray;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
-/**
- * Created by ray on 14.12.2014.
- */
 public class Farmer {
-    public static List<Plant> plants = null;
+    private static List<Plant> plants = null;
 
     public static void main(String[] args) {
-
-//        for (int i=0; i<20; i++){
-//            int num = (int) (Math.random() * 3);
-//            System.out.println(num);
-//        }
-
         Farm farm = new Farm(20);
         plants = new ArrayList<Plant>();
         fillFarm(farm);
-        System.out.println("hey!");
+        waterFarm(farm);
+        harvest();
     }
 
-    public static void fillFarm(Farm farm){
-        while (farm.getFreePlace()>=Plant.MINIMAL_PLANT_SIZE){
+    public static void fillFarm(Farm farm) {
+        while (farm.getFreePlace() >= Plant.MINIMAL_PLANT_SIZE) {
             Plant plant = Market.buyPlant(farm.getFreePlace());
+            System.out.println(plant.getClass().getSimpleName());
             plants.add(plant);
             farm.decreaseFreePlace(plant.getSize());
-           // System.out.println(plant.getClass().toString());
         }
     }
 
+    private static void waterFarm(Farm farm) {
+        while (!farm.isAllHarvested()) {
+            for (Plant plant : plants) {
+                if (plant.getTimesWatered() < plant.getTimesWateredBeforeHarvest()) {
+                    farm.setAllHarvested(plant.water());
+                }
+            }
+        }
+    }
+
+    private static void harvest() {
+        Map<String, Integer> farmHarvest = new HashMap<String, Integer>();
+        for (Plant plant : plants) {
+            int harvest = plant.getHarvest();
+            String plantName = plant.getClass().getSimpleName();
+            Integer plantHarvest = farmHarvest.get(plantName);
+            int newPlantHarvest = harvest;
+            if (plantHarvest != null) {
+                newPlantHarvest = plantHarvest + harvest;
+            }
+            farmHarvest.put(plantName, newPlantHarvest);
+        }
+        for (Map.Entry<String, Integer> entry : farmHarvest.entrySet()) {
+            System.out.println(entry.getKey() + " : " + entry.getValue());
+        }
+    }
 
 }

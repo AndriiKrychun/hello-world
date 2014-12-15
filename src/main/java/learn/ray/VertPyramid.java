@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class VertPyramid {
 
-      public static void main(String[] args) {
+    public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter height: ");
         int height = scanner.nextInt();

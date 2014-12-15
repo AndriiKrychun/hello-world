@@ -8,14 +8,14 @@ public class Game {
         int num = (int) (Math.random() * 1000);
         System.out.println("Try to guess the number between 0 and 1000 :");
         Scanner scanner = new Scanner(System.in);
-        while (!guess){
+        while (!guess) {
             int input = scanner.nextInt();
-            if (input==num){
+            if (input == num) {
                 System.out.println("Win!");
-                guess=true;
-            } else if (input<num){
+                guess = true;
+            } else if (input < num) {
                 System.out.println("Your number is smaller. Try again :");
-            } else if (input>num){
+            } else if (input > num) {
                 System.out.println("Your number is greater. Try again :");
             }
         }
