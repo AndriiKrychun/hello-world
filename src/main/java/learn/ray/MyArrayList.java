@@ -1,25 +1,39 @@
 package learn.ray;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 public class MyArrayList<E> extends ArrayList<E> {
+    private static int getCount;
+    private static int setCount;
 
+    public static void setGetCount(int getCount) {
+        MyArrayList.getCount = getCount;
+    }
 
+    public static void setSetCount(int setCount) {
+        MyArrayList.setCount = setCount;
+    }
+
+    public static int getGetCount(){
+        return getCount;
+    }
+
+    public static int getSetCount(){
+        return setCount;
+    }
 
     @Override
     public E get(int i) {
-        System.out.println("Overrided " + i);
+        getCount++;
         return super.get(i);
-
-
     }
 
-    public MyArrayList(int initialCapacity) {
-        super();
-
+    @Override
+    public E set(int i, E element){
+        setCount++;
+        return super.set(i, element);
     }
+
 
     public MyArrayList() {
         super();

@@ -2,54 +2,76 @@ package learn.ray;
 
 import java.io.FileInputStream;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class AlgorithmAnalyzer {
-    //public List<String> list=null;
+
 
     public static void main(String[] args) {
-        //List<String> list = new MyArrayList<>();
-        List<String> list = new ArrayList<>();
 
-        try  {
+        List<String> list1 = new MyArrayList<>();
+        List<String> list2 = new MyArrayList<>();
+        try {
             Scanner scanner = new Scanner(new FileInputStream("src\\main\\java\\learn\\ray\\inputfile"));
             while (scanner.hasNext()) {
                 String str = scanner.next();
-                list.add(str);
+                list1.add(str);
+                list2.add(str);
             }
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-        String temp = null;
-        for(int j = 0 ; j < list.size(); j++){
-            for(int i = 0 ; i < list.size() - j; i++){
 
-                if(list.get(i).compareTo(list.get(i+1)) > 0){
-                    temp = list.get(i);
-                    list.set(i,list.get(i+1)) ;
-                    list.set((i+1),temp);
-                }
-            }
+        System.out.println("List length: " + list1.size());
+        MyArrayList.setGetCount(0);
+        MyArrayList.setSetCount(0);
+        bubbleSortAnalyze(list1);
+        System.out.println("Bubble Sort: " + MyArrayList.getGetCount() + " readings, " + MyArrayList.getSetCount() + " writings.");
+
+        MyArrayList.setGetCount(0);
+        MyArrayList.setSetCount(0);
+        insertSortAnalyze(list2);
+        System.out.println("Insertion Sort: " + MyArrayList.getGetCount() + " readings, " + MyArrayList.getSetCount() + " writings.");
+
+        for (String str : list1) {
+            System.out.println(str);
         }
+
+
+
 
     }
 
 
-    private List<String> sort(List<String> list){
+    public static void bubbleSortAnalyze(List<String> list) {
         String temp = null;
-        for(int j = 0 ; j < list.size(); j++){
-            for(int i = 0 ; i < list.size() - j; i++){
+        for (int j = 0; j < list.size() - 1; j++) {
+            for (int i = 0; i < list.size() - j - 1; i++) {
 
-                if(list.get(i).compareTo(list.get(i+1)) > 0){
+                if (list.get(i).compareTo(list.get(i + 1)) > 0) {
                     temp = list.get(i);
-                    list.set(i,list.get(i+1)) ;
-                    list.set((i+1),temp);
+                    list.set(i, list.get(i + 1));
+                    list.set((i + 1), temp);
                 }
             }
         }
-        return list;
+    }
+
+    public static void insertSortAnalyze(List<String> list)
+    {
+        int i, j;
+        String value;
+
+        for(i = 1; i < list.size(); i++)
+        {
+            value = list.get(i);
+            for (j = i - 1; j >= 0 && (list.get(j).compareTo(value)>0); j--)
+            {
+                list.set(j + 1, list.get(j));
+            }
+            list.set(j + 1, value);
+        }
     }
 
 }
