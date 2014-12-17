@@ -1,5 +1,4 @@
 package learn.ray;
-//package com.serg.bloim;
 
 import org.junit.Assert;
 import org.junit.Before;
