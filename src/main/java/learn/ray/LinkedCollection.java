@@ -4,34 +4,28 @@ package learn.ray;
 import java.util.Collection;
 import java.util.Iterator;
 
-
 public class LinkedCollection implements Collection {
-    private ListElement firstElement;
-
-
-
+    private Entry top;
+    private Entry bottom;
     private int size;
-
-    public LinkedCollection() {
-        this.firstElement = null;
-        this.size = 0;
-
+    public LinkedCollection(){
+        top=null;
+        bottom=null;
+        size=0;
     }
 
-    public ListElement getFirstElement() {
-        return firstElement;
-    }
-
-    @Override
-    public int size() {
+    public int size(){
         return size;
     }
 
-    @Override
-    public boolean isEmpty() {
-        if(firstElement==null){
+
+    public Entry getTop(){
+        return top;
+    }
+
+    public boolean isEmpty(){
+        if(top==null)
             return true;
-        }
         return false;
     }
 
@@ -52,24 +46,34 @@ public class LinkedCollection implements Collection {
 
     @Override
     public boolean add(Object o) {
-       ListElement tempElement = new ListElement();
-        tempElement.setElement(o);
-        tempElement.setNext(firstElement);
-        firstElement=tempElement;
+        if (top==null){
+            this.bottom = new Entry();
+            this.bottom.setElement(o);
+            this.top = this.bottom;
+            this.bottom.setNext(null);
+            this.size++;
+        } else {
+            Entry newEntry = new Entry();
+            this.top.setNext(newEntry);
+            this.top = newEntry;
+            this.top.setElement(o);
+            this.top.setNext(null);
+
+        }
+
+        Entry newEntry = new Entry();
+        newEntry.setElement(o);
+        newEntry.setNext(top);
+        top=newEntry;
         size++;
+
         return false;
     }
 
-    public Object get(){
-        if (isEmpty()){
-            return null;
-        }
-        return firstElement.getElement();
-
-    }
 
     @Override
     public boolean remove(Object o) {
+
         return false;
     }
 
@@ -103,14 +107,48 @@ public class LinkedCollection implements Collection {
         return new Object[0];
     }
 
-    public class ListElement {
-        private Object element;
-        private ListElement next;
 
-        public ListElement(){
+
+    public Object top(){
+        if(isEmpty()){
+            System.out.println("List is empty");
+            System.exit(0);
+        }
+        return top.getElement();
+    }
+
+    public Object pop(){
+        if(isEmpty()){
+            System.out.println("Stack is empty");
+            System.exit(0);
+        }
+        Object obj=top.getElement();
+        top=top.getNext();
+        size--;
+        return obj;
+    }
+
+
+
+    public static void main(String args[]){
+        LinkedCollection list=new LinkedCollection();
+        list.add("SSSSSSSS");
+        list.add("AAAAAAAAA");
+        list.add("wwwwwwwww");
+        System.out.println(list.getTop().getElement());
+        System.out.println(list.size);
+        list.pop();
+        System.out.println(list.getTop().getElement());
+    }
+
+    public class Entry {
+        private Object element;
+        private Entry next;
+
+        public Entry(){
 
         }
-        public ListElement(Object element, ListElement next){
+        public Entry(Object element, Entry next){
             this.next=next;
             this.element=element;
         }
@@ -118,14 +156,14 @@ public class LinkedCollection implements Collection {
         public Object getElement(){
             return element;
         }
-        public ListElement getNext(){
+        public Entry getNext(){
             return next;
         }
 
         public void setElement(Object element){
             this.element=element;
         }
-        public void setNext(ListElement next){
+        public void setNext(Entry next){
             this.next=next;
         }
 
