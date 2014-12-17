@@ -15,7 +15,7 @@ public class SumFromStringTest {
     }
 
     @Test
-    public void testIsLeapYear() throws Exception {
+    public void testSumFromString() throws Exception {
         double expectedSum = 8.0;
         double actualSum = sumFromString.getSumFromString("1i3lh4");
         Assert.assertEquals(expectedSum, actualSum, 0.01);
