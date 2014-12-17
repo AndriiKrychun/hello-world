@@ -15,10 +15,15 @@ public class PairsProblem implements PairedBracketsAlgorithm {
     }
 
     @Override
-    public boolean checkExpressionCorrect(String s) {
-        s = s.replaceAll("[^\\(|^\\)|^\\[|^\\]|^\\{|^\\}]", "");
-        s = s.replaceAll("(\\(\\)|\\[\\]|\\{\\})", "");
-        if (0 == s.length()) {
+    public boolean checkExpressionCorrect(String expression) {
+        expression = expression.replaceAll("[^\\(|^\\)|^\\[|^\\]|^\\{|^\\}]", "");
+        String tempExpression;
+        do {
+            tempExpression=expression;
+            expression = expression.replaceAll("(\\(\\)|\\[\\]|\\{\\})", "");
+        } while (!expression.equals(tempExpression));
+
+        if (0 == expression.length()) {
             return true;
         }
         return false;

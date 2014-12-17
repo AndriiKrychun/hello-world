@@ -15,8 +15,14 @@ public class PairsProblemTest {
     }
 
     @Test
-    public void testPairsProblem() throws Exception {
+    public void testPairsProblem1() throws Exception {
         String expression = "(.)(.)";
+        Assert.assertTrue(pairsProblem.checkExpressionCorrect(expression));
+    }
+
+    @Test
+    public void testPairsProblem2() throws Exception {
+        String expression = "((.)(.)adsd)";
         Assert.assertTrue(pairsProblem.checkExpressionCorrect(expression));
     }
 
