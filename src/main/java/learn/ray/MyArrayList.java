@@ -3,40 +3,34 @@ package learn.ray;
 import java.util.ArrayList;
 
 public class MyArrayList<E> extends ArrayList<E> {
-    private static int getCount;
-    private static int setCount;
+    private  int getCount;
+    private  int setCount;
 
-    public static void setGetCount(int getCount) {
-        MyArrayList.getCount = getCount;
+    public  int getGetCount(){
+        return this.getCount;
     }
 
-    public static void setSetCount(int setCount) {
-        MyArrayList.setCount = setCount;
-    }
-
-    public static int getGetCount(){
-        return getCount;
-    }
-
-    public static int getSetCount(){
-        return setCount;
+    public  int getSetCount(){
+        return this.setCount;
     }
 
     @Override
     public E get(int i) {
-        getCount++;
+        this.getCount++;
         return super.get(i);
     }
 
     @Override
     public E set(int i, E element){
-        setCount++;
+        this.setCount++;
         return super.set(i, element);
     }
 
 
     public MyArrayList() {
         super();
+        getCount=0;
+        setCount=0;
     }
 
 

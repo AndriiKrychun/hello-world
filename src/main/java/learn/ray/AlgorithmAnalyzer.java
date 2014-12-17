@@ -1,7 +1,6 @@
 package learn.ray;
 
 import java.io.FileInputStream;
-
 import java.util.List;
 import java.util.Scanner;
 
@@ -10,8 +9,9 @@ public class AlgorithmAnalyzer {
 
     public static void main(String[] args) {
 
-        List<String> list1 = new MyArrayList<>();
-        List<String> list2 = new MyArrayList<>();
+//        List<String> list1 = new MyArrayList<>();
+        MyArrayList<String> list1 = new MyArrayList<>();
+        MyArrayList<String> list2 = new MyArrayList<>();
         try {
             Scanner scanner = new Scanner(new FileInputStream("src\\main\\java\\learn\\ray\\inputfile"));
             while (scanner.hasNext()) {
@@ -24,28 +24,19 @@ public class AlgorithmAnalyzer {
         }
 
         System.out.println("List length: " + list1.size());
-        MyArrayList.setGetCount(0);
-        MyArrayList.setSetCount(0);
         bubbleSortAnalyze(list1);
-        System.out.println("Bubble Sort: " + MyArrayList.getGetCount() + " readings, " + MyArrayList.getSetCount() + " writings.");
-
-        MyArrayList.setGetCount(0);
-        MyArrayList.setSetCount(0);
+        System.out.println("Bubble Sort: " + list1.getGetCount() + " readings, " + list1.getSetCount() + " writings.");
         insertSortAnalyze(list2);
-        System.out.println("Insertion Sort: " + MyArrayList.getGetCount() + " readings, " + MyArrayList.getSetCount() + " writings.");
+        System.out.println("Insertion Sort: " + list2.getGetCount() + " readings, " + list2.getSetCount() + " writings.");
 
-        for (String str : list1) {
-            System.out.println(str);
-        }
-
-
-
-
+//        for (String str : list1) {
+//            System.out.println(str);
+//        }
     }
 
 
     public static void bubbleSortAnalyze(List<String> list) {
-        String temp = null;
+        String temp;
         for (int j = 0; j < list.size() - 1; j++) {
             for (int i = 0; i < list.size() - j - 1; i++) {
 
