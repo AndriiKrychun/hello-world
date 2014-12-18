@@ -15,6 +15,39 @@ public class LinkedCollection implements Collection {
         size = 0;
     }
 
+
+    public static void main(String args[]){
+        LinkedCollection list=new LinkedCollection();
+//        System.out.println(list.getTop().getElement());
+        list.add("First");
+        list.add("Second");
+        list.add("Third");
+        list.add("Fourth");
+        list.add("Fifth");
+
+
+
+        for (Object s : list.toArray())  System.out.println(s);
+
+
+//        System.out.println(list.size());
+//        System.out.println(list.getTop().getElement());
+        list.remove("Fourth");
+//        System.out.println(list.size());
+//        System.out.println(list.getTop().getElement());
+//        list.remove("Fifth");
+        System.out.println(list.size());
+//        System.out.println(list.getTop().getElement());
+        list.remove("First");
+        System.out.println(list.size());
+//        System.out.println(list.getTop().getElement());
+        System.out.println("-------------");
+        for (Object ss : list.toArray())  System.out.println(ss);
+
+
+    }
+
+
     public int size() {
         return size;
     }
@@ -33,6 +66,22 @@ public class LinkedCollection implements Collection {
 
     @Override
     public Iterator iterator() {
+//        Iterator iterator = new Iterator() {
+//            @Override
+//            public boolean hasNext() {
+//                return false;
+//            }
+//
+//            @Override
+//            public Object next() {
+//                return null;
+//            }
+//
+//            @Override
+//            public void remove() {
+//
+//            }
+//        }
         return null;
     }
 
@@ -141,5 +190,26 @@ public class LinkedCollection implements Collection {
 //        return obj;
 //    }
 
+    public class Entry {
+        private Object element;
+        private Entry next;
 
+        public Entry(){
+
+        }
+
+        public Object getElement(){
+            return element;
+        }
+        public Entry getNext(){
+            return next;
+        }
+
+        public void setElement(Object element){
+            this.element=element;
+        }
+        public void setNext(Entry next){
+            this.next=next;
+        }
+    }
 }
