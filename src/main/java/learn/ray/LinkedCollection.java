@@ -23,12 +23,14 @@ public class LinkedCollection implements Collection {
 
         for (Object s : list.toArray())  System.out.println(s);
 
+        list.clear();
         System.out.println("--------------------------Via Iterator");
         Iterator it = list.iterator();
         while (it.hasNext()){
             System.out.println(it.next());
         }
         System.out.println("--------------------------Stop");
+
 
 //        System.out.println(list.size());
 //        System.out.println(list.getTop().getElement());
@@ -169,7 +171,8 @@ public class LinkedCollection implements Collection {
 
     @Override
     public void clear() {
-
+        top=null;
+        size=0;
     }
 
     @Override

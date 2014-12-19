@@ -3,20 +3,30 @@ package learn.ray;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
 //import tasks.LeapYear;
 
 
+@RunWith(Parameterized.class)
 public class CharacterDistributionTest {
 
-    CharacterDistribution characterDistribution;
 
-    @Before
-    public void setUp() throws Exception {
-        characterDistribution = new CharacterDistribution();
+    @Parameterized.Parameter
+    public CharacterDistribution characterDistribution = new CharacterDistribution();
+
+
+    @Parameterized.Parameters
+    public static Collection<Object[]> data() {
+        ArrayList<Object[]> params = new ArrayList<>();
+        params.add(new Object[]{new CharacterDistribution()});
+        return params;
     }
 
     @Test

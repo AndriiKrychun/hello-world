@@ -2,21 +2,43 @@ package learn.ray;
 
 import org.junit.Assert;
 import org.junit.Before;
+import org.junit.After;
+import org.junit.BeforeClass;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
+
+import java.util.ArrayList;
+import java.util.Collection;
 
 
+@RunWith(Parameterized.class)
 public class LinkedCollectionTest {
-    LinkedCollection list;
+
+    @Parameterized.Parameter
+    public LinkedCollection list = new LinkedCollection();
+
+
+
+    @Parameterized.Parameters
+    public static Collection<Object[]> data() {
+        ArrayList<Object[]> params = new ArrayList<>();
+        params.add(new Object[]{new LinkedCollection()});
+        return params;
+    }
 
 
     @Before
-    public void setUp() throws Exception {
-        list=new LinkedCollection();
+    public  void setUp() throws Exception {
         list.add("First");
         list.add("Second");
         list.add("Third");
         list.add("Fourth");
         list.add("Fifth");
+    }
+    @After
+    public void tearDown() throws Exception{
+        list.clear();
     }
 
     @Test
@@ -32,4 +54,6 @@ public class LinkedCollectionTest {
         list.remove("Second");
         Assert.assertEquals(list.size(),4);
     }
+
+
 }

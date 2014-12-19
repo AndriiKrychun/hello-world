@@ -8,17 +8,17 @@ import java.util.Scanner;
 
 public class CharacterDistribution implements CharacterDistributionAlgorithm {
 
-    public static void main(String[] args) {
-        CharacterDistribution characterDistribution = new CharacterDistribution();
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Enter string : ");
-        String input = scanner.next();
-        Map<Character, Integer> charDistr = characterDistribution.getDistribution(input);
-        for (Map.Entry<Character, Integer> entry : charDistr.entrySet()) {
-            System.out.println(entry.getKey() + " : " + entry.getValue());
-        }
-
-    }
+//    public static void main(String[] args) {
+//        CharacterDistribution characterDistribution = new CharacterDistribution();
+//        Scanner scanner = new Scanner(System.in);
+//        System.out.print("Enter string : ");
+//        String input = scanner.next();
+//        Map<Character, Integer> charDistr = characterDistribution.getDistribution(input);
+//        for (Map.Entry<Character, Integer> entry : charDistr.entrySet()) {
+//            System.out.println(entry.getKey() + " : " + entry.getValue());
+//        }
+//
+//    }
 
 
     @Override
