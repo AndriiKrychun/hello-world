@@ -9,12 +9,6 @@ public class LinkedCollection implements Collection {
     private Entry bottom;
     private int size;
 
-    public LinkedCollection() {
-        top = null;
-        bottom = null;
-        size = 0;
-    }
-
 
     public static void main(String args[]){
         LinkedCollection list=new LinkedCollection();
@@ -29,6 +23,12 @@ public class LinkedCollection implements Collection {
 
         for (Object s : list.toArray())  System.out.println(s);
 
+        System.out.println("--------------------------Via Iterator");
+        Iterator it = list.iterator();
+        while (it.hasNext()){
+            System.out.println(it.next());
+        }
+        System.out.println("--------------------------Stop");
 
 //        System.out.println(list.size());
 //        System.out.println(list.getTop().getElement());
@@ -61,28 +61,46 @@ public class LinkedCollection implements Collection {
 
     @Override
     public boolean contains(Object o) {
+        Entry tempEntry = top;
+        for (int i = 0; i < size; i++) {
+            if (!(tempEntry.getElement().equals(o))) {
+                tempEntry = tempEntry.getNext();
+            } else {
+                return true;
+            }
+        }
         return false;
     }
 
+
     @Override
     public Iterator iterator() {
-//        Iterator iterator = new Iterator() {
-//            @Override
-//            public boolean hasNext() {
-//                return false;
-//            }
-//
-//            @Override
-//            public Object next() {
-//                return null;
-//            }
-//
-//            @Override
-//            public void remove() {
-//
-//            }
-//        }
-        return null;
+        Iterator iterator = new Iterator() {
+            int currentPos;
+            int returnedPos;
+
+            @Override
+            public boolean hasNext() {
+                if (currentPos != size)  return true;
+                return false;
+            }
+
+            @Override
+            public Object next() {
+                Entry tempEntry = top;
+                for (int i=0; i < currentPos; i++){
+                    tempEntry = tempEntry.getNext();
+                }
+                currentPos++;
+                return tempEntry.getElement();
+            }
+
+            @Override
+            public void remove() {
+
+            }
+        };
+        return iterator;
     }
 
     @Override
@@ -96,6 +114,12 @@ public class LinkedCollection implements Collection {
         }
         return array;
     }
+
+    @Override
+    public Object[] toArray(Object[] a) {
+        return new Object[0];
+    }
+
 
     @Override
     public boolean add(Object o) {
@@ -163,40 +187,10 @@ public class LinkedCollection implements Collection {
         return false;
     }
 
-    @Override
-    public Object[] toArray(Object[] a) {
-
-
-        return new Object[0];
-    }
-
-
-//    public Object top(){
-//        if(isEmpty()){
-//            System.out.println("List is empty");
-//            System.exit(0);
-//        }
-//        return top.getElement();
-//    }
-//
-//    public Object pop(){
-//        if(isEmpty()){
-//            System.out.println("Stack is empty");
-//            System.exit(0);
-//        }
-//        Object obj=top.getElement();
-//        this.top=top.getNext();
-//        size--;
-//        return obj;
-//    }
 
     public class Entry {
         private Object element;
         private Entry next;
-
-        public Entry(){
-
-        }
 
         public Object getElement(){
             return element;
