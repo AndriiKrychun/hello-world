@@ -3,10 +3,7 @@ package Automation;
 import org.apache.wink.client.ClientResponse;
 import org.apache.wink.client.Resource;
 import org.apache.wink.client.RestClient;
-
 import javax.ws.rs.core.MediaType;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
@@ -47,29 +44,27 @@ public class AlmUtils {
 
 
 
-//        try (InputStream is = AlmUtils.class.getClassLoader().getResourceAsStream("src\\main\\java\\Automation\\tests.properties")) {
-//            Properties props = new Properties();
-//            props.load(is);
-//            return new ConnectionProperties(props);
-//        } catch (IOException e) {
-//            throw new RuntimeException("test.properties missed");
-//        }
-
-
-        Properties props = new Properties();
-        InputStream input = null;
-        try {
-            input = new FileInputStream("src\\main\\java\\Automation\\tests.properties");
-            props.load(input);
-        } catch (Exception e) {
-            e.printStackTrace();
-            System.out.println(e.getMessage());
+        try (InputStream is = AlmUtils.class.getResourceAsStream("tests.properties")) {
+            Properties props = new Properties();
+            props.load(is);
+            return new ConnectionProperties(props);
+        } catch (IOException e) {
+            throw new RuntimeException("test.properties missed");
         }
 
-        System.out.println(props.getProperty("test.project.name"));
 
-
-        return new ConnectionProperties(props);
+//        Properties props = new Properties();
+//        InputStream input = null;
+//        try {
+//            input = new FileInputStream("src\\main\\java\\Automation\\tests.properties");
+//            props.load(input);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            System.out.println(e.getMessage());
+//        }
+//
+//        System.out.println(props.getProperty("test.project.name"));
+//        return new ConnectionProperties(props);
 
     }
 
