@@ -1,10 +1,10 @@
 package learn.ray;
 
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
+import tasks.LeapYearAlgorithm;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -14,7 +14,7 @@ import java.util.Collection;
 public class LeapYearTest {
 
     @Parameterized.Parameter
-    public LeapYear algorithm = new LeapYear();
+    public LeapYearAlgorithm algorithm = new LeapYear();
 
 
     @Parameterized.Parameters

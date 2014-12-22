@@ -1,17 +1,15 @@
 package learn.ray;
 
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
+import tasks.CharacterDistributionAlgorithm;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
-
-//import tasks.LeapYear;
 
 
 @RunWith(Parameterized.class)
@@ -19,7 +17,7 @@ public class CharacterDistributionTest {
 
 
     @Parameterized.Parameter
-    public CharacterDistribution characterDistribution = new CharacterDistribution();
+    public CharacterDistributionAlgorithm characterDistribution = new CharacterDistribution();
 
 
     @Parameterized.Parameters

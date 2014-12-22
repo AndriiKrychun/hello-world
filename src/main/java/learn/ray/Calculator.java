@@ -7,23 +7,21 @@ import java.util.regex.Pattern;
 public class Calculator {
 
     public static void main(String[] args) {
-        int sum = 0;
         float result = 0;
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter expression : ");
         String input = scanner.next();
 
-        Pattern pat = Pattern.compile("(\\d+(\\.\\d)?)([\\+\\-\\/\\*])(\\d+)");
+        Pattern pat = Pattern.compile("((\\d+)(\\.\\d+)?)([\\+\\-\\/\\*])((\\d+)(\\.\\d+)?)");
         Matcher mat = pat.matcher(input);
         mat.find();
         String oper1 = mat.group(1);
-        String operator = mat.group(2);
-        String oper2 = mat.group(3);
+        String operator = mat.group(4);
+        String oper2 = mat.group(5);
 
-        //Scanner sc = new Scanner(input);
-        //sc.useDelimiter("[+-]");
-        //String oper1 = sc.next();
-        //String oper2 = sc.next();
+
+        System.out.println(mat.group(1) + " -- " + mat.group(4) + " -- " + mat.group(5));
+
 
         switch (operator) {
             case "+":

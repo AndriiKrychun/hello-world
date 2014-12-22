@@ -1,22 +1,31 @@
 package learn.ray;
 
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
+import tasks.SubSequenceAlgorithm;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.List;
 
 //import tasks.LeapYear;
 
-
+@RunWith(Parameterized.class)
 public class SubsequenceTest {
 
-    Subsequence subsequence;
+    @Parameterized.Parameter
+    public SubSequenceAlgorithm subsequence = new Subsequence();
 
-    @Before
-    public void setUp() throws Exception {
-        subsequence = new Subsequence();
+    @Parameterized.Parameters
+    public static Collection<Object[]> data() {
+        ArrayList<Object[]> params = new ArrayList<>();
+        params.add(new Object[]{new Subsequence()});
+        return params;
     }
+
 
     @Test
     public void testSubsequence() throws Exception {

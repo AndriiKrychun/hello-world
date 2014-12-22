@@ -2,27 +2,26 @@ package learn.ray;
 
 import tasks.SubSequenceAlgorithm;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Subsequence implements SubSequenceAlgorithm {
-    public static void main(String[] args) {
-        List bigList = new ArrayList();
-        List smallList = new ArrayList();
-        bigList.add(1);
-        bigList.add(2);
-        bigList.add(3);
-        bigList.add(4);
-        bigList.add(5);
-        bigList.add(6);
-        bigList.add(7);
-        smallList.add(2);
-        smallList.add(2);
-        smallList.add(5);
-        Subsequence subsequence = new Subsequence();
-        boolean result = subsequence.isSubSequence(bigList, smallList);
-        System.out.println(result);
-    }
+//    public static void main(String[] args) {
+//        List bigList = new ArrayList();
+//        List smallList = new ArrayList();
+//        bigList.add(1);
+//        bigList.add(2);
+//        bigList.add(3);
+//        bigList.add(4);
+//        bigList.add(5);
+//        bigList.add(6);
+//        bigList.add(7);
+//        smallList.add(2);
+//        smallList.add(2);
+//        smallList.add(5);
+//        Subsequence subsequence = new Subsequence();
+//        boolean result = subsequence.isSubSequence(bigList, smallList);
+//        System.out.println(result);
+//    }
 
 
     @Override
