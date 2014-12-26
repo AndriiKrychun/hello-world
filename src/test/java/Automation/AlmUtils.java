@@ -8,9 +8,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
-/**
- * Created by akrychun on 12/22/14.
- */
+
 public class AlmUtils {
     public static CookieStorage login(String almBaseUri, String user, String pass) {
         CookieStorage cookieStorage = new CookieStorage();
@@ -44,7 +42,7 @@ public class AlmUtils {
 
 
 
-        try (InputStream is = AlmUtils.class.getResourceAsStream("tests.properties")) {
+        try (InputStream is = AlmUtils.class.getClassLoader().getResourceAsStream("tests.properties")) {
             Properties props = new Properties();
             props.load(is);
             return new ConnectionProperties(props);
@@ -53,18 +51,7 @@ public class AlmUtils {
         }
 
 
-//        Properties props = new Properties();
-//        InputStream input = null;
-//        try {
-//            input = new FileInputStream("src\\main\\java\\Automation\\tests.properties");
-//            props.load(input);
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//            System.out.println(e.getMessage());
-//        }
-//
-//        System.out.println(props.getProperty("test.project.name"));
-//        return new ConnectionProperties(props);
+
 
     }
 
@@ -73,8 +60,4 @@ public class AlmUtils {
         return login(props.getBaseDirUri(), props.getUserName(), props.getPassword());
     }
 
-    public static String getDefaultProjectUri() {
-        ConnectionProperties props = getConnectionProperties();
-        return props.getBaseDirUri() + String.format("api/domains/%s/projects/%s/", props.getDomain(), props.getProject());
-    }
-}
+ }
