@@ -33,4 +33,10 @@ public class LeapYearTest {
     public void testIsLeapYearNegative() throws Exception {
         Assert.assertFalse(algorithm.isLeapYear(2001));
     }
+
+    @Test (expected = RuntimeException.class)
+    public void testLeapYearZeroException(){
+        algorithm.isLeapYear(0);
+    }
+
 }
